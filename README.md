@@ -64,15 +64,15 @@ We evaluate three individual LLMs and one hybrid approach for text correction, u
 
 ## 📊 Results & Insights
 
-After extensive testing, we observed the following:
+### 🔍 What’s the Best Model? Can LLM Combinations Boost Performance?
 
-- **Translation models (e.g., MarianMT)** are ineffective for OCR correction; they often distort meaning rather than fix errors.
-- **T5** offers moderate improvements.
-- **BART** performs best across all metrics.
+After extensive experimentation, we observed the following:
 
-### ROUGE Evaluation
+- **Translation models** like *MarianMT* are **ineffective for OCR correction** — they tend to distort the intended meaning rather than correct typographical errors.
+- **T5** provides **moderate gains**, but not enough to outperform simpler baselines.
+- **BART** consistently delivers the **best results across all metrics**.
 
-We evaluated the output using ROUGE scores, a standard metric for assessing the similarity between corrected and ground-truth text. Here are the results:
+To objectively assess the output quality, we used **ROUGE** scores — a standard metric for measuring overlap with ground-truth text.
 
 | **Method**               | **ROUGE-1** | **ROUGE-2** | **ROUGE-L** |
 |--------------------------|-------------|-------------|-------------|
@@ -82,8 +82,22 @@ We evaluated the output using ROUGE scores, a standard metric for assessing the 
 | OCR (baseline)           | 0.8026      | 0.6577      | 0.8013      |
 | Back-Translation + T5    | 0.7226      | 0.4541      | 0.6388      |
 
-📌 **Conclusion**:  
-BART is the most effective model for OCR error correction in this context. Combining models did **not** outperform individual ones.
+📌 **Takeaway**:  
+**BART is the most effective model** for OCR post-correction in this setup. Interestingly, **model combinations did not outperform** standalone models.
+
+---
+
+### 🧠 LLM-as-a-Judge: Can We Trust Models Like Gemini to Evaluate Text?
+
+We explored whether an LLM (Gemini) can reliably score and rank model outputs.
+
+- **Gemini tends to overrate the raw OCR output**, often assigning it higher quality than warranted.
+- Its scoring is **less nuanced**, avoiding extreme ratings.
+- It **correctly identified the best (BART)** and **worst (Back-Translation)** performing models.
+- However, it **misjudged T5**, ranking it below raw OCR — contradicting both human evaluation and ROUGE scores.
+
+📌 **Takeaway**:  
+While Gemini can spot clear differences in quality, it **lacks the sensitivity needed for finer distinctions**. It’s useful for quick assessments but **shouldn’t be relied on for detailed model evaluation**.
 
 ---
 
