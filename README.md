@@ -19,7 +19,7 @@ We evaluate three individual LLMs and one hybrid approach for text correction, u
 
 ### Paper
 
-MNLP_Homework_2_Pythoms.pdf : The paper we wrote, associated to this work
+`MNLP_Homework_2_Pythoms.pdf` : The paper we wrote, associated to this work
 
 ### 🗂 Notebooks
 
