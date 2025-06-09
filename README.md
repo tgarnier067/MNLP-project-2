@@ -17,6 +17,10 @@ We evaluate three individual LLMs and one hybrid approach for text correction, u
 
 ## 📁 Project Structure
 
+### Paper
+
+MNLP_Homework_2_Pythoms.pdf : The paper we wrote, associated to this work
+
 ### 🗂 Notebooks
 
 - `00_Data_extraction.ipynb`  
